@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.suixingpay.pojo.Company" >
+    <id column="ComId" property="comid" jdbcType="INTEGER" />
+    <result column="ComName" property="comname" jdbcType="VARCHAR" />
+    <result column="ComNature" property="comnature" jdbcType="VARCHAR" />
+    <result column="ComIndustry" property="comindustry" jdbcType="VARCHAR" />
+    <result column="ComCode" property="comcode" jdbcType="VARCHAR" />
+    <result column="ComConPeo" property="comconpeo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ComId, ComName, ComNature, ComIndustry, ComCode, ComConPeo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where ComId = #{comid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer" >
+    delete from company
+    where ComId = #{comid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suixingpay.pojo.Company" >
+    insert into company (ComId, ComName, ComNature, 
+      ComIndustry, ComCode, ComConPeo
+      )
+    values (#{comid,jdbcType=INTEGER}, #{comname,jdbcType=VARCHAR}, #{comnature,jdbcType=VARCHAR}, 
+      #{comindustry,jdbcType=VARCHAR}, #{comcode,jdbcType=VARCHAR}, #{comconpeo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.suixingpay.pojo.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="comid != null" >
+        ComId,
+      </if>
+      <if test="comname != null" >
+        ComName,
+      </if>
+      <if test="comnature != null" >
+        ComNature,
+      </if>
+      <if test="comindustry != null" >
+        ComIndustry,
+      </if>
+      <if test="comcode != null" >
+        ComCode,
+      </if>
+      <if test="comconpeo != null" >
+        ComConPeo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="comid != null" >
+        #{comid,jdbcType=INTEGER},
+      </if>
+      <if test="comname != null" >
+        #{comname,jdbcType=VARCHAR},
+      </if>
+      <if test="comnature != null" >
+        #{comnature,jdbcType=VARCHAR},
+      </if>
+      <if test="comindustry != null" >
+        #{comindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="comcode != null" >
+        #{comcode,jdbcType=VARCHAR},
+      </if>
+      <if test="comconpeo != null" >
+        #{comconpeo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Company" >
+    update company
+    <set >
+      <if test="comname != null" >
+        ComName = #{comname,jdbcType=VARCHAR},
+      </if>
+      <if test="comnature != null" >
+        ComNature = #{comnature,jdbcType=VARCHAR},
+      </if>
+      <if test="comindustry != null" >
+        ComIndustry = #{comindustry,jdbcType=VARCHAR},
+      </if>
+      <if test="comcode != null" >
+        ComCode = #{comcode,jdbcType=VARCHAR},
+      </if>
+      <if test="comconpeo != null" >
+        ComConPeo = #{comconpeo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ComId = #{comid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suixingpay.pojo.Company" >
+    update company
+    set ComName = #{comname,jdbcType=VARCHAR},
+      ComNature = #{comnature,jdbcType=VARCHAR},
+      ComIndustry = #{comindustry,jdbcType=VARCHAR},
+      ComCode = #{comcode,jdbcType=VARCHAR},
+      ComConPeo = #{comconpeo,jdbcType=VARCHAR}
+    where ComId = #{comid,jdbcType=INTEGER}
+  </update>
+</mapper>

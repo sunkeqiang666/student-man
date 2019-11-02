@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.mapper.EmpeinfMapper" >
+  <resultMap id="BaseResultMap" type="com.suixingpay.pojo.Empeinf" >
+    <id column="empid" property="empid" jdbcType="INTEGER" />
+    <result column="Stuid" property="stuid" jdbcType="INTEGER" />
+    <result column="ComId" property="comid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    empid, Stuid, ComId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from empeinf
+    where empid = #{empid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer" >
+    delete from empeinf
+    where empid = #{empid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suixingpay.pojo.Empeinf" >
+    insert into empeinf (empid, Stuid, ComId
+      )
+    values (#{empid,jdbcType=INTEGER}, #{stuid,jdbcType=INTEGER}, #{comid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.suixingpay.pojo.Empeinf" >
+    insert into empeinf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="stuid != null" >
+        Stuid,
+      </if>
+      <if test="comid != null" >
+        ComId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empid != null" >
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="comid != null" >
+        #{comid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Empeinf" >
+    update empeinf
+    <set >
+      <if test="stuid != null" >
+        Stuid = #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="comid != null" >
+        ComId = #{comid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where empid = #{empid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suixingpay.pojo.Empeinf" >
+    update empeinf
+    set Stuid = #{stuid,jdbcType=INTEGER},
+      ComId = #{comid,jdbcType=INTEGER}
+    where empid = #{empid,jdbcType=INTEGER}
+  </update>
+</mapper>

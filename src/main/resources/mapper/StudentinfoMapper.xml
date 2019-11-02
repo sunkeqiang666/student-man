@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.mapper.StudentinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.suixingpay.pojo.Studentinfo" >
+    <id column="StuId" property="stuid" jdbcType="INTEGER" />
+    <result column="StuName" property="stuname" jdbcType="VARCHAR" />
+    <result column="StuSex" property="stusex" jdbcType="INTEGER" />
+    <result column="Nation" property="nation" jdbcType="VARCHAR" />
+    <result column="BirthData" property="birthdata" jdbcType="DATE" />
+    <result column="IdCard" property="idcard" jdbcType="VARCHAR" />
+    <result column="OneChild" property="onechild" jdbcType="INTEGER" />
+    <result column="StuPhone" property="stuphone" jdbcType="VARCHAR" />
+    <result column="Email" property="email" jdbcType="VARCHAR" />
+    <result column="QqNumber" property="qqnumber" jdbcType="INTEGER" />
+    <result column="FuDaoYuanId" property="fudaoyuanid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    StuId, StuName, StuSex, Nation, BirthData, IdCard, OneChild, StuPhone, Email, QqNumber, 
+    FuDaoYuanId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from studentinfo
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer" >
+    delete from studentinfo
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suixingpay.pojo.Studentinfo" >
+    insert into studentinfo (StuId, StuName, StuSex, 
+      Nation, BirthData, IdCard, 
+      OneChild, StuPhone, Email, 
+      QqNumber, FuDaoYuanId)
+    values (#{stuid,jdbcType=INTEGER}, #{stuname,jdbcType=VARCHAR}, #{stusex,jdbcType=INTEGER}, 
+      #{nation,jdbcType=VARCHAR}, #{birthdata,jdbcType=DATE}, #{idcard,jdbcType=VARCHAR}, 
+      #{onechild,jdbcType=INTEGER}, #{stuphone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{qqnumber,jdbcType=INTEGER}, #{fudaoyuanid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suixingpay.pojo.Studentinfo" >
+    insert into studentinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        StuId,
+      </if>
+      <if test="stuname != null" >
+        StuName,
+      </if>
+      <if test="stusex != null" >
+        StuSex,
+      </if>
+      <if test="nation != null" >
+        Nation,
+      </if>
+      <if test="birthdata != null" >
+        BirthData,
+      </if>
+      <if test="idcard != null" >
+        IdCard,
+      </if>
+      <if test="onechild != null" >
+        OneChild,
+      </if>
+      <if test="stuphone != null" >
+        StuPhone,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="qqnumber != null" >
+        QqNumber,
+      </if>
+      <if test="fudaoyuanid != null" >
+        FuDaoYuanId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="stuname != null" >
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stusex != null" >
+        #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdata != null" >
+        #{birthdata,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="onechild != null" >
+        #{onechild,jdbcType=INTEGER},
+      </if>
+      <if test="stuphone != null" >
+        #{stuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnumber != null" >
+        #{qqnumber,jdbcType=INTEGER},
+      </if>
+      <if test="fudaoyuanid != null" >
+        #{fudaoyuanid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Studentinfo" >
+    update studentinfo
+    <set >
+      <if test="stuname != null" >
+        StuName = #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stusex != null" >
+        StuSex = #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        Nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdata != null" >
+        BirthData = #{birthdata,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        IdCard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="onechild != null" >
+        OneChild = #{onechild,jdbcType=INTEGER},
+      </if>
+      <if test="stuphone != null" >
+        StuPhone = #{stuphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnumber != null" >
+        QqNumber = #{qqnumber,jdbcType=INTEGER},
+      </if>
+      <if test="fudaoyuanid != null" >
+        FuDaoYuanId = #{fudaoyuanid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suixingpay.pojo.Studentinfo" >
+    update studentinfo
+    set StuName = #{stuname,jdbcType=VARCHAR},
+      StuSex = #{stusex,jdbcType=INTEGER},
+      Nation = #{nation,jdbcType=VARCHAR},
+      BirthData = #{birthdata,jdbcType=DATE},
+      IdCard = #{idcard,jdbcType=VARCHAR},
+      OneChild = #{onechild,jdbcType=INTEGER},
+      StuPhone = #{stuphone,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      QqNumber = #{qqnumber,jdbcType=INTEGER},
+      FuDaoYuanId = #{fudaoyuanid,jdbcType=INTEGER}
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </update>
+</mapper>

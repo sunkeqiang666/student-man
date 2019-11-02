@@ -9,6 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
     @RequestMapping("/student-man")
     public String index(){
-        return "index.html";
+        return "index";
+    }
+
+    @RequestMapping("/studentIndex")
+    public String studentIndex(){
+        return "studentIndex";
+    }
+
+    @RequestMapping("/teacherIndex")
+    public String teacherIndex(){
+        return "teacherIndex";
     }
 }

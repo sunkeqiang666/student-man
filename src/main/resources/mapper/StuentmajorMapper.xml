@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.mapper.StuentmajorMapper" >
+  <resultMap id="BaseResultMap" type="com.suixingpay.pojo.Stuentmajor" >
+    <id column="StuId" property="stuid" jdbcType="VARCHAR" />
+    <result column="Stu_type" property="stuType" jdbcType="VARCHAR" />
+    <result column="Stu_College" property="stuCollege" jdbcType="VARCHAR" />
+    <result column="Stu_Major" property="stuMajor" jdbcType="VARCHAR" />
+    <result column="Stu_class" property="stuClass" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    StuId, Stu_type, Stu_College, Stu_Major, Stu_class
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from stuentmajor
+    where StuId = #{stuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer" >
+    delete from stuentmajor
+    where StuId = #{stuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.suixingpay.pojo.Stuentmajor" >
+    insert into stuentmajor (StuId, Stu_type, Stu_College, 
+      Stu_Major, Stu_class)
+    values (#{stuid,jdbcType=VARCHAR}, #{stuType,jdbcType=VARCHAR}, #{stuCollege,jdbcType=VARCHAR}, 
+      #{stuMajor,jdbcType=VARCHAR}, #{stuClass,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suixingpay.pojo.Stuentmajor" >
+    insert into stuentmajor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        StuId,
+      </if>
+      <if test="stuType != null" >
+        Stu_type,
+      </if>
+      <if test="stuCollege != null" >
+        Stu_College,
+      </if>
+      <if test="stuMajor != null" >
+        Stu_Major,
+      </if>
+      <if test="stuClass != null" >
+        Stu_class,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        #{stuid,jdbcType=VARCHAR},
+      </if>
+      <if test="stuType != null" >
+        #{stuType,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCollege != null" >
+        #{stuCollege,jdbcType=VARCHAR},
+      </if>
+      <if test="stuMajor != null" >
+        #{stuMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="stuClass != null" >
+        #{stuClass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Stuentmajor" >
+    update stuentmajor
+    <set >
+      <if test="stuType != null" >
+        Stu_type = #{stuType,jdbcType=VARCHAR},
+      </if>
+      <if test="stuCollege != null" >
+        Stu_College = #{stuCollege,jdbcType=VARCHAR},
+      </if>
+      <if test="stuMajor != null" >
+        Stu_Major = #{stuMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="stuClass != null" >
+        Stu_class = #{stuClass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where StuId = #{stuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suixingpay.pojo.Stuentmajor" >
+    update stuentmajor
+    set Stu_type = #{stuType,jdbcType=VARCHAR},
+      Stu_College = #{stuCollege,jdbcType=VARCHAR},
+      Stu_Major = #{stuMajor,jdbcType=VARCHAR},
+      Stu_class = #{stuClass,jdbcType=VARCHAR}
+    where StuId = #{stuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

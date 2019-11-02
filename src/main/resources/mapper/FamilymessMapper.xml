@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.suixingpay.mapper.FamilymessMapper" >
+  <resultMap id="BaseResultMap" type="com.suixingpay.pojo.Familymess" >
+    <id column="StuId" property="stuid" jdbcType="INTEGER" />
+    <result column="ParName" property="parname" jdbcType="VARCHAR" />
+    <result column="ParPhone" property="parphone" jdbcType="VARCHAR" />
+    <result column="Par_StuRelationship" property="parSturelationship" jdbcType="VARCHAR" />
+    <result column="poorgrades" property="poorgrades" jdbcType="VARCHAR" />
+    <result column="homeaddr" property="homeaddr" jdbcType="VARCHAR" />
+    <result column="poladdr" property="poladdr" jdbcType="VARCHAR" />
+    <result column="polcode" property="polcode" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    StuId, ParName, ParPhone, Par_StuRelationship, poorgrades, homeaddr, poladdr, polcode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from familymess
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="Integer" >
+    delete from familymess
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.suixingpay.pojo.Familymess" >
+    insert into familymess (StuId, ParName, ParPhone, 
+      Par_StuRelationship, poorgrades, homeaddr, 
+      poladdr, polcode)
+    values (#{stuid,jdbcType=INTEGER}, #{parname,jdbcType=VARCHAR}, #{parphone,jdbcType=VARCHAR}, 
+      #{parSturelationship,jdbcType=VARCHAR}, #{poorgrades,jdbcType=VARCHAR}, #{homeaddr,jdbcType=VARCHAR}, 
+      #{poladdr,jdbcType=VARCHAR}, #{polcode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.suixingpay.pojo.Familymess" >
+    insert into familymess
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        StuId,
+      </if>
+      <if test="parname != null" >
+        ParName,
+      </if>
+      <if test="parphone != null" >
+        ParPhone,
+      </if>
+      <if test="parSturelationship != null" >
+        Par_StuRelationship,
+      </if>
+      <if test="poorgrades != null" >
+        poorgrades,
+      </if>
+      <if test="homeaddr != null" >
+        homeaddr,
+      </if>
+      <if test="poladdr != null" >
+        poladdr,
+      </if>
+      <if test="polcode != null" >
+        polcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stuid != null" >
+        #{stuid,jdbcType=INTEGER},
+      </if>
+      <if test="parname != null" >
+        #{parname,jdbcType=VARCHAR},
+      </if>
+      <if test="parphone != null" >
+        #{parphone,jdbcType=VARCHAR},
+      </if>
+      <if test="parSturelationship != null" >
+        #{parSturelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="poorgrades != null" >
+        #{poorgrades,jdbcType=VARCHAR},
+      </if>
+      <if test="homeaddr != null" >
+        #{homeaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="poladdr != null" >
+        #{poladdr,jdbcType=VARCHAR},
+      </if>
+      <if test="polcode != null" >
+        #{polcode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Familymess" >
+    update familymess
+    <set >
+      <if test="parname != null" >
+        ParName = #{parname,jdbcType=VARCHAR},
+      </if>
+      <if test="parphone != null" >
+        ParPhone = #{parphone,jdbcType=VARCHAR},
+      </if>
+      <if test="parSturelationship != null" >
+        Par_StuRelationship = #{parSturelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="poorgrades != null" >
+        poorgrades = #{poorgrades,jdbcType=VARCHAR},
+      </if>
+      <if test="homeaddr != null" >
+        homeaddr = #{homeaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="poladdr != null" >
+        poladdr = #{poladdr,jdbcType=VARCHAR},
+      </if>
+      <if test="polcode != null" >
+        polcode = #{polcode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.suixingpay.pojo.Familymess" >
+    update familymess
+    set ParName = #{parname,jdbcType=VARCHAR},
+      ParPhone = #{parphone,jdbcType=VARCHAR},
+      Par_StuRelationship = #{parSturelationship,jdbcType=VARCHAR},
+      poorgrades = #{poorgrades,jdbcType=VARCHAR},
+      homeaddr = #{homeaddr,jdbcType=VARCHAR},
+      poladdr = #{poladdr,jdbcType=VARCHAR},
+      polcode = #{polcode,jdbcType=INTEGER}
+    where StuId = #{stuid,jdbcType=INTEGER}
+  </update>
+</mapper>
