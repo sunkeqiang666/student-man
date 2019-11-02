@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/common.css" >
+	<link rel="stylesheet" href="css/school-msg.css">
+
+</head>
+<body>
+	<div class="school-msg">
+		<div class="pos-set wrap">
+			<span>当前位置>学籍信息</span>
+			<p>
+				<span id="emit">编辑</span>
+				<span id="keep" style="margin-left: 20px">保存</span>
+			</p>
+		</div>
+		<div class="basics-msg">
+			<p>基础信息</p>
+		</div>
+		<div class="basics-list">
+			<ul class="clearfix">
+				<li>
+					<label for="">学号:</label>
+					<div class="inp-border">
+						<input type="text" disabled>
+					</div>
+				</li>
+
+				<li>
+					<label for="">入校时间 :</label>
+					<div class="inp-border">
+						<input type="date" disabled>
+					</div>
+				</li>
+				<li>
+					<label for="">毕业时间 :</label>
+					<div class="inp-border">
+						<input type="date" disabled>
+					</div>
+				</li>
+
+				<li>
+					<label for="">生源所在地 :</label>
+					<div class="inp-border">
+						<input type="text" disabled>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="basics-msg">
+			<p>专业信息</p>
+		</div>
+		<div class="basics-list">
+			<ul class="clearfix">
+				<li>
+					<label for="">专业名称 :</label>
+					<div class="inp-border">
+						<input type="text" disabled>
+					</div>
+				</li>
+				<li>
+					<label for="">所在院系 :</label>
+					<div class="inp-border">
+						<input type="text" disabled>
+					</div>
+				</li>
+				<li>
+					<label for="">所在班级 :</label>
+					<div class="inp-border">
+						<input type="text" disabled>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$('#emit').on('click',function(){
+        	$('input').removeAttr('disabled');
+        });
+        $('#keep').on('click',function(){
+        	$('input').attr('disabled','disabled');
+        });
+	</script>
+</body>
+</html>

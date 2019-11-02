@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" type="text/css" href="css/StudentInfo.css"/>
+	</head>
+	<body>
+		<div class="container flgure">
+			<div class="content">
+				<ul class="clearfix info">
+					<li class="active">重案6组</li>
+				</ul>
+				<div class="basic">
+					<div class="basicInfo select active">
+						<div class="thead">
+							<p>统计表</p>
+						</div>
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<th>姓名</a></th>
+								<th>学号</th>
+								<th>性别</th>
+								<th>专业</th>
+								<th>电话</th>
+								<th>就业</a></th>
+
+							</tr>
+							<tr>
+								<td><a href="FamilyInformation.html">程晓琪</td>
+								<td>201613003</td>
+								<td>女</td>
+								<td>计算机</td>
+								<td>13463871719</td>
+								<td><a href="TeacherEmInformation.html">查询</a></td>
+							</tr>
+							<tr>
+								<td><a href="FamilyInformation.html">程晓琪</td>
+								<td>201613003</td>
+								<td>女</td>
+								<td>计算机</td>
+								<td>13463871719</td>
+								<td><a href="TeacherEmInformation.html">查询</a></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript">
+			$('.info li').click(function() {
+				$(this).addClass("active").siblings().removeClass("active");
+				$('.basic .select').eq($("ul li").index(this)).addClass("active").siblings().removeClass("active")
+			});
+		</script>
+	</body>
+</html>
