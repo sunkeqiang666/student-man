@@ -1,17 +1,14 @@
 package com.suixingpay.mapper;
 
 import com.suixingpay.pojo.Login;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
+@Mapper
 public interface LoginMapper {
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(Login record);
-
-    int insertSelective(Login record);
-
-    Login selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Login record);
-
-    int updateByPrimaryKey(Login record);
+    @Update("UPDATE login SET password=#{password} WHERE stuId=#{stuid}")
+    int updateStudent(Login login);
+    @Select("select stuId,password,mark from login where stuId=#{stuid}")
+    Login selectStudentByStuId(int stuid);
 }
