@@ -7,76 +7,11 @@
     <result column="stuId" property="stuid" jdbcType="INTEGER" />
     <result column="mark" property="mark" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, password, stuId, mark
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from login
-    where id = #{id,jdbcType=INTEGER}
+  <update id="updateStudent">
+    UPDATE login SET password=#{password} WHERE stuId=#{stuid}
+  </update>
+  <select id="selectStudentByStuId" resultType="com.suixingpay.pojo.Login">
+    select stuId,password from login where stuId=#{stuid} and mark=#{mark}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from login
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.suixingpay.pojo.Login" >
-    insert into login (id, password, stuId, 
-      mark)
-    values (#{id,jdbcType=INTEGER}, #{password,jdbcType=VARCHAR}, #{stuid,jdbcType=INTEGER}, 
-      #{mark,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.suixingpay.pojo.Login" >
-    insert into login
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="stuid != null" >
-        stuId,
-      </if>
-      <if test="mark != null" >
-        mark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="stuid != null" >
-        #{stuid,jdbcType=INTEGER},
-      </if>
-      <if test="mark != null" >
-        #{mark,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Login" >
-    update login
-    <set >
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="stuid != null" >
-        stuId = #{stuid,jdbcType=INTEGER},
-      </if>
-      <if test="mark != null" >
-        mark = #{mark,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.suixingpay.pojo.Login" >
-    update login
-    set password = #{password,jdbcType=VARCHAR},
-      stuId = #{stuid,jdbcType=INTEGER},
-      mark = #{mark,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+
 </mapper>
