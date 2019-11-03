@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.suixingpay.pojo.Studentinfo" >
+  <update id="updateStudent" parameterType="com.suixingpay.pojo.Studentinfo">
     update studentinfo
     <set >
       <if test="stuname != null" >
