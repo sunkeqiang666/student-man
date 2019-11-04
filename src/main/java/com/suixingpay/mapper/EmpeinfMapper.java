@@ -1,6 +1,8 @@
 package com.suixingpay.mapper;
 
 import com.suixingpay.pojo.Empeinf;
+import jdk.nashorn.internal.objects.annotations.Setter;
+import org.apache.ibatis.annotations.Select;
 
 public interface EmpeinfMapper {
     int deleteByPrimaryKey(Integer empid);
@@ -14,4 +16,7 @@ public interface EmpeinfMapper {
     int updateByPrimaryKeySelective(Empeinf record);
 
     int updateByPrimaryKey(Empeinf record);
+
+    @Select("select * from empeinf where Stuid = #{stuId}")
+    Empeinf selectCompanyIdByStuId(int stuId);
 }

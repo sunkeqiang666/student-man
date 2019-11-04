@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/StudentEmInformation.css">
+    <link rel="stylesheet" th:href="@{css/common.css}"/>
+    <link rel="stylesheet" th:href="@{css/StudentEmInformation.css}"/>
 </head>
 <body>
 <div class="EmInformation container">
     <div class="information-content content">
+
+        <form th:action="@{/updateEmInformation2}" method="post" id="myform">
+
         <div class="information-title">
             <span>当前位置>某某学生>就业信息</span>
             <div class="bottom fr">
-                <a href="javascript:;"  class="l">编辑</a>
-                <a href="javascript:;" class="r">保存</a>
+                <a th:href="@{javascript:}"  class="l">编辑</a>
+                <input type="submit" value="提交&nbsp&nbsp">
             </div>
         </div>
         <!--单位信息开始-->
@@ -23,15 +26,19 @@
             </div>
             <div class="unit-list clearfix">
                 <div class="fl">
-                    <div class="list "><label>单位名称</label> : <input type="text" class="oInp" disabled value="" name="username" disabled/></div>
-                    <div class="list "><label>单位性质</label> : <input type="text" class="oInp" disabled value=""  name="username" disabled/></div>
-                    <div class="list "><label>单位行业</label> : <input type="text" value=""  name="username" class="oInp" disabled/></div>
-                    <div class="list "><label>单位邮编</label> : <input type="number" value=""  name="username" class="oInp" disabled/></div>
-                    <div class="list "><label>单位联系人</label> : <input type="text" value=""  name="username" class="oInp" disabled/></div>
+                    <input type="hidden" name="comid" th:value="${company.comid}">
+                    <input type="hidden" name="stuId" th:value="${1}">
+                    <div class="list "><label>单位名称</label> : <input th:value="${company.comname}" type="text" class="oInp" name="comname" disabled /></div>
+                    <div class="list "><label>单位性质</label> : <input th:value="${company.comnature}" type="text" class="oInp"  name="comnature" disabled /></div>
+                    <div class="list "><label>单位行业</label> : <input th:value="${company.comindustry}" type="text" name="comindustry" class="oInp" disabled /></div>
+                    <div class="list "><label>单位邮编</label> : <input th:value="${company.comcode}" type="number" name="comcode" class="oInp" disabled /></div>
+                    <div class="list "><label>单位联系人</label> : <input th:value="${company.comconpeo}" type="text" name="comconpeo" class="oInp" disabled /></div>
                 </div>
 
             </div>
         </div>
+
+        </form>
         <!--单位信息结束-->
         <!--报到证档案信息开始-->
 

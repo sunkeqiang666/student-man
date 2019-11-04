@@ -60,4 +60,16 @@ public class Company {
     public void setComconpeo(String comconpeo) {
         this.comconpeo = comconpeo == null ? null : comconpeo.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "comid=" + comid +
+                ", comname='" + comname + '\'' +
+                ", comnature='" + comnature + '\'' +
+                ", comindustry='" + comindustry + '\'' +
+                ", comcode='" + comcode + '\'' +
+                ", comconpeo='" + comconpeo + '\'' +
+                '}';
+    }
 }

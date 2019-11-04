@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -25,41 +25,46 @@
                         基础信息
                     </div>
                 </div>
+
                 <form action="">
+
+                <form action="#" th:action="@{/updateStudent}" th:object="${studentinfo}" method="post">
+
                 <div class="content clearfix">
                     <div class="left fl">
                         <div>
                             <label for="">姓名：</label>
-                            <input id="stu_name" type="text" value="" disabled />
+                            <input id="stu_name" type="text" th:field="*{stuname}" th:value="${studentinfo.stuname}" disabled />
                         </div>
                         <div>
                             <label for="">性别：</label>
-                            男：<input type="radio" name="sex" value="0" style="width: 20px; margin-top: 12px;">
-                            女：<input type="radio" name="sex" value="1" style="width: 20px;">
+                            男：<input type="radio" name="sex" th:field="*{stusex}" th:value="0" th:checked="${studentinfo.stusex == 0}" style="width: 20px; margin-top: 12px;">
+                            女：<input type="radio" name="sex" th:field="*{stusex}" th:value="1" th:checked="${studentinfo.stusex == 1}" style="width: 20px;">
                         </div>
                         <div>
                             <label for="">出生日期：</label>
-                            <input id="birthday" type="date" value="" disabled>
+                            <input id="birthday" type="date" th:field="*{birthdata}" th:value="${#dates.format(studentinfo.birthdata, 'yyyy年/MM月/dd日')}" disabled>
                         </div>
+
                         <div>
                             <label for="">身份证号：</label>
-                            <input id="idNumber" class="id oInp" type="text" value="" disabled>
+                            <input id="idNumber" class="id oInp" type="text" th:field="*{idcard}" th:value="${studentinfo.idcard}" disabled>
                         </div>
                     </div>
                     <div class="right fr">
                         <div>
                             <label for="">学号：</label>
-                            <input id="xstu_id" type="number" value="" disabled>
+                            <input id="xstu_id" type="number" th:field="*{stuid}" th:value="${studentinfo.stuid}" disabled>
                         </div>
                         <div>
                             <label for="">民族：</label>
-                            <input id="national_name" type="text" value="" disabled>
+                            <input id="national_name" type="text" th:field="*{nation}" th:value="${studentinfo.nation}" disabled>
                         </div>
 
                         <div class="label">
                             <label for="">独生子女：</label>
-                            否：<input type="radio" name="du" value="0" style="width: 20px; margin-top: 12px;">
-                            是：<input type="radio" name="du" value="1" style="width: 20px;">
+                            否：<input type="radio" name="du" th:field="*{onechild}" th:value="0" th:checked="${studentinfo.onechild == 0}" style="width: 20px; margin-top: 12px;">
+                            是：<input type="radio" name="du" th:field="*{onechild}" th:value="1" th:checked="${studentinfo.onechild == 1}" style="width: 20px;">
                         </div>
                     </div>
                 </div>
@@ -71,27 +76,32 @@
                     <div class="left fl">
                         <div>
                             <label for="">手机号码：</label>
-                            <input id="phone" type="number" value="" disabled>
+                            <input id="phone" type="number" th:field="*{stuphone}" th:value="${studentinfo.stuphone}" disabled>
                         </div>
                         <div>
                             <label for="">QQ号码：</label>
-                            <input id="qq" type="number" value="" disabled>
+                            <input id="qq" type="number" th:field="*{qqnumber}" th:value="${studentinfo.qqnumber}" disabled>
                         </div>
                     </div>
                     <div class="right fr">
                         <div>
                             <label for="">电子邮箱：</label>
-                            <input id="e_mail" type="text" value="" class="mailbox" disabled>
+                            <input id="e_mail" type="text" th:field="*{email}" th:value="${studentinfo.email}" class="mailbox" disabled>
                         </div>
                     </div>
+
                 </div>
+
                     <div class="right fr">
                         <div>
                             <input type="submit" value="提交" id="sub" style="height:35px;width:50px;padding:0;margin-right:50px;">
                         </div>
                     </div>
                 </form>
+
                 </div>
+
+            </div>
             </div>
         </div>
     </div>
@@ -114,9 +124,6 @@
         });
         $('#emit').on('click',function(){
 			$('input').removeAttr('disabled');
-		});
-		$('#keep').on('click',function(){
-			$('input').attr('disabled','disabled');
 		});
     	$(document).ready(function(){
     		$.ajax({

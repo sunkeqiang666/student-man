@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8"/>
 		<title></title>
-		<link rel="stylesheet" href="css/StudentLeft.css">
+		<link rel="stylesheet" href="css/StudentLeft.css"/>
 		<script src="js/jquery-1.9.1.min.js"></script>
 	</head>
 	<body>
 		<div class="nav">
 			<div class="nav-list">
 				<div class="nav-tit" id="personal">
-					<a href="student.html" target="main">
-						<img src="../static/css/images/personal-msg.png" style="height: 30px" alt="">
+					<a href="/selectStudent" target="main">
+						<img src="../static/css/images/personal-msg.png" style="height: 30px" alt=""/>
 						<span>个人信息</span>
 					</a>
 				</div>
                 <div class="nav-tit">
                     <a href="school-msg.html" target="main">
-                        <img src="../static/css/images/archives-msg.png" alt="">
+                        <img src="../static/css/images/archives-msg.png" alt=""/>
                         <span>档案信息</span>
                     </a>
                 </div>
 				<div class="nav-tit">
-					<a href="StudentEmInformation.html" target="main">
-						<img src="../static/css/images/job-msg.png" alt="">
+					<a href="/studentEmInformation?stuId=1" target="main">
+						<img src="../static/css/images/job-msg.png" alt=""/>
 						<span>就业信息</span>
 					</a>
 				</div>
 				<div class="nav-tit">
 					<a href="StudentRevise.html" target="main">
-					<img src="../static/css/images/modify-password.png" alt="">
+					<img src="../static/css/images/modify-password.png" alt=""/>
 					<span>修改密码</span>
 					</a>
 				</div>
@@ -41,7 +41,7 @@
 				$('#personal').on('click',function(){
 					$('#personal-child').fadeToggle(300);
 				});
-				let aLi = $('#personal-child li');
+				var aLi = $('#personal-child li');
 				aLi.on('click',function(){
 					$(this).addClass('active').siblings('li').removeClass('active');
 				})
