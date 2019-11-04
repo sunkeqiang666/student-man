@@ -3,13 +3,13 @@ package com.suixingpay.pojo;
 import java.util.Date;
 
 public class Studentstatus {
-    private Integer stuid;
+    private Integer stuid;//学号
 
-    private Date stuIn;
+    private Date stuIn;//入学时间
 
-    private Date stuOut;
+    private Date stuOut;//毕业时间
 
-    private String stuBeforeschool;
+    private String stuBeforeschool;//生源所在地
 
     public Integer getStuid() {
         return stuid;

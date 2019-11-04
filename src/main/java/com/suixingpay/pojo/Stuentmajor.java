@@ -1,15 +1,21 @@
 package com.suixingpay.pojo;
 
+import java.util.List;
+
 public class Stuentmajor {
-    private Integer stuid;
+    private Integer stuid;//学号
+
+    private String stuCollege;//所在院系
+
+    private String stuMajor;//专业名称
+
+
+
+    private String stuClass;//所在班级
 
     private String stuType;
 
-    private String stuCollege;
 
-    private String stuMajor;
-
-    private String stuClass;
 
     public Integer getStuid() {
         return stuid;
@@ -50,4 +56,15 @@ public class Stuentmajor {
     public void setStuClass(String stuClass) {
         this.stuClass = stuClass == null ? null : stuClass.trim();
     }
+    @Override
+    public String toString() {
+        return "Stuentmajor{" +
+                "stuid=" + stuid +
+                ", stuCollege='" + stuCollege + '\'' +
+                ", stuMajor='" + stuMajor + '\'' +
+                ", stuClass='" + stuClass + '\'' +
+                ", stuType='" + stuType + '\'' +
+                '}';
+    }
+
 }

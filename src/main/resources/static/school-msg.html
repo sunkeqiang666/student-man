@@ -8,15 +8,16 @@
 
 </head>
 <body>
-	<div class="school-msg">
+	<form class="school-msg" action="">
 		<div class="pos-set wrap">
 			<span>当前位置>学籍信息</span>
 			<p>
 				<span id="emit">编辑</span>
-				<span id="keep" style="margin-left: 20px">保存</span>
 			</p>
 		</div>
+
 		<div class="basics-msg">
+
 			<p>基础信息</p>
 		</div>
 		<div class="basics-list">
@@ -75,7 +76,14 @@
 				</li>
 			</ul>
 		</div>
+		<div class="right fr">
+			<div>
+				<input type="submit" value="提交" id="sub" style="height:30px;width:50px;padding:0;margin-right:50px;">
+			</div>
+		</div>
+
 	</div>
+	</form>
 	<script src="js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 		$('#emit').on('click',function(){
